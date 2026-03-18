@@ -1,0 +1,14 @@
+web/node_modules
+web/dist
+api/__pycache__
+api/*.pyc
+api/.venv
+api/venv
+*.db
+*.db-shm
+*.db-wal
+.git
+.gitignore
+docs
+*.md
+!web/README.md

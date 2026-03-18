@@ -1,0 +1,776 @@
+@use '@carbon/react';
+
+html,
+body,
+#root {
+  min-height: 100%;
+}
+
+body {
+  margin: 0;
+}
+
+.index-dashboard {
+  min-height: 100vh;
+  background: var(--cds-background);
+}
+
+.index-dashboard__content {
+  padding-top: 3rem;
+  max-width: none;
+}
+
+.index-dashboard__grid {
+  padding: 0.875rem 1rem 2rem;
+}
+
+.index-dashboard__header-actions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding-right: 0.75rem;
+}
+
+.dashboard-section {
+  margin-bottom: 0.875rem;
+}
+
+.section-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 0.75rem 1rem;
+  align-items: flex-start;
+  margin-bottom: 0.75rem;
+}
+
+.section-heading > div {
+  min-width: 0;
+}
+
+.section-heading h1,
+.section-heading h2,
+.metric-tile__value,
+.service-card h4,
+.status-tile h3,
+.incident-tile h4,
+.empty-tile h4,
+.admin-panel h2,
+.user-grid__item h4 {
+  margin: 0;
+}
+
+.section-heading h1 {
+  font-size: clamp(2rem, 3vw, 3rem);
+  line-height: 1.05;
+}
+
+.section-heading h2 {
+  line-height: 1.1;
+}
+
+.section-heading p,
+.service-card p,
+.metric-tile__helper,
+.status-tile p,
+.category-description,
+.incident-tile p,
+.empty-tile p,
+.admin-panel p,
+.service-detail__notes p,
+.user-grid__item p,
+.user-grid__item small {
+  color: var(--cds-text-secondary);
+}
+
+.section-heading p {
+  max-width: 72ch;
+  margin-top: 0.35rem;
+}
+
+.metric-tile,
+.service-card,
+.status-tile,
+.incident-tile,
+.empty-tile {
+  height: 100%;
+}
+
+.metric-tile {
+  display: grid;
+  gap: 0.5rem;
+  min-height: 8.75rem;
+}
+
+.metric-tile__label {
+  color: var(--cds-text-secondary);
+}
+
+.metric-tile__value {
+  font-size: clamp(2rem, 3vw, 2.6rem);
+  line-height: 1;
+}
+
+.service-card {
+  display: grid;
+  gap: 0.75rem;
+  min-height: 11.75rem;
+  margin-bottom: 0;
+}
+
+.service-card--compact {
+  min-height: 9.5rem;
+}
+
+.service-card__header,
+.service-card__details,
+.service-card__actions,
+.service-card__meta,
+.directory-toolbar,
+.quick-launch-list,
+.incident-tile__header,
+.incident-tile__meta,
+.service-detail__actions,
+.service-detail__kv,
+.admin-form-flags,
+.filters-panel__row {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.service-card__header,
+.service-card__details,
+.incident-tile__header,
+.incident-tile__meta,
+.service-detail__kv {
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.service-card__meta {
+  flex-wrap: wrap;
+}
+
+.service-card__details {
+  color: var(--cds-text-secondary);
+  font-size: 0.875rem;
+}
+
+.service-card__header > div,
+.incident-tile__header > div {
+  min-width: 0;
+}
+
+.service-card__header p,
+.incident-tile p,
+.empty-tile p,
+.status-tile p {
+  margin: 0.25rem 0 0;
+}
+
+.service-card__header p {
+  display: -webkit-box;
+  overflow: hidden;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.service-card__actions {
+  margin-top: auto;
+  flex-wrap: wrap;
+}
+
+.directory-toolbar,
+.filters-panel__row {
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+.directory-toolbar .cds--search,
+.filters-panel__row .cds--search {
+  flex: 1 1 24rem;
+  min-width: 18rem;
+}
+
+.filters-panel__row {
+  display: grid;
+  grid-template-columns: minmax(16rem, 2.4fr) repeat(3, minmax(11rem, 1fr));
+  align-items: end;
+}
+
+.filters-panel__row .cds--search {
+  min-width: 0;
+}
+
+.directory-accordion {
+  margin-bottom: 1rem;
+}
+
+.category-description {
+  margin: 0 0 1rem;
+}
+
+.status-tile--error {
+  border-left: 0.25rem solid var(--cds-support-error);
+}
+
+.service-grid,
+.incident-grid,
+.quick-launch-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16.5rem, 1fr));
+  gap: 0.875rem;
+}
+
+.service-grid--dense {
+  grid-template-columns: repeat(auto-fit, minmax(15.25rem, 1fr));
+  gap: 0.75rem;
+}
+
+.quick-launch-list,
+.incident-grid--dense {
+  grid-template-columns: 1fr;
+  gap: 0.75rem;
+}
+
+.incident-tile,
+.empty-tile,
+.admin-panel,
+.service-detail__panel,
+.history-panel,
+.filters-panel {
+  display: grid;
+  gap: 1rem;
+}
+
+.incident-tile__meta,
+.service-detail__kv {
+  color: var(--cds-text-secondary);
+  font-size: 0.875rem;
+}
+
+.status-tile--summary {
+  min-height: 8.75rem;
+  align-content: start;
+}
+
+.status-tile__tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.overview-service-tabs {
+  border: 1px solid var(--cds-border-subtle);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--cds-layer-accent) 28%, transparent) 0%, transparent 100%);
+}
+
+.overview-service-tabs .cds--tab-content {
+  padding-inline: 1rem;
+  padding-bottom: 1rem;
+}
+
+.overview-service-tabs__intro {
+  margin: 0 0 0.75rem;
+  color: var(--cds-text-secondary);
+}
+
+.service-detail__header-tags,
+.service-detail__tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.service-detail__notes {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.service-detail__link-list,
+.history-list {
+  display: grid;
+  gap: 0.75rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.service-detail__link-list li,
+.history-list__item,
+.admin-list__item,
+.user-grid__item {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+  align-items: flex-start;
+}
+
+.service-detail__link-list li {
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--cds-border-subtle);
+}
+
+.history-list__item {
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--cds-border-subtle);
+}
+
+.admin-list {
+  display: grid;
+  gap: 0.5rem;
+}
+
+.admin-list__item {
+  width: 100%;
+  border: 1px solid var(--cds-border-subtle);
+  background: var(--cds-layer);
+  color: var(--cds-text-primary);
+  text-align: left;
+  padding: 0.875rem 1rem;
+  cursor: pointer;
+}
+
+.admin-list__item--active,
+.admin-list__item:hover {
+  border-color: var(--cds-border-interactive);
+  background: var(--cds-layer-hover);
+}
+
+.admin-form-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: 1rem;
+}
+
+.user-grid {
+  display: grid;
+  gap: 0.75rem;
+}
+
+.user-grid__item {
+  border-bottom: 1px solid var(--cds-border-subtle);
+  padding-bottom: 0.75rem;
+}
+
+.topology-panel,
+.topology-inspector,
+.topology-summary-card {
+  display: grid;
+  gap: 1rem;
+}
+
+.topology-panel,
+.topology-summary-card {
+  padding: 1rem;
+  border: 1px solid var(--cds-border-subtle);
+  background:
+    radial-gradient(circle at top left, color-mix(in srgb, var(--cds-link-primary) 10%, transparent) 0, transparent 35%),
+    linear-gradient(180deg, color-mix(in srgb, var(--cds-layer-accent) 55%, transparent) 0%, transparent 100%);
+}
+
+.topology-panel--page {
+  padding: 1rem;
+}
+
+.topology-panel--loading {
+  min-height: 16rem;
+  align-items: center;
+}
+
+.topology-panel__header,
+.topology-panel__summary,
+.topology-summary-card__header,
+.topology-summary-card__stats,
+.topology-summary-card__body,
+.topology-summary-card__signal,
+.topology-toolbar,
+.topology-toolbar__controls,
+.topology-toolbar__legend,
+.topology-panel__body,
+.topology-inspector__header,
+.topology-inspector__tags,
+.topology-inspector__stats,
+.topology-inspector__links,
+.topology-node__header,
+.topology-node__meta,
+.topology-node__footer,
+.topology-node__footer-tags {
+  display: flex;
+  gap: 0.75rem;
+}
+
+.topology-panel__header,
+.topology-summary-card__header,
+.topology-toolbar,
+.topology-summary-card__signal,
+.topology-inspector__header,
+.topology-node__header,
+.topology-node__meta,
+.topology-node__footer {
+  justify-content: space-between;
+  align-items: flex-start;
+}
+
+.topology-panel__summary,
+.topology-summary-card__stats,
+.topology-toolbar__controls,
+.topology-toolbar__legend,
+.topology-inspector__tags,
+.topology-inspector__links,
+.topology-node__footer-tags {
+  flex-wrap: wrap;
+}
+
+.topology-toolbar {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  align-items: start;
+  padding: 0.875rem 1rem;
+  border: 1px solid var(--cds-border-subtle);
+  background: color-mix(in srgb, var(--cds-layer-accent) 35%, transparent);
+}
+
+.topology-toolbar__legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--cds-text-secondary);
+  font-size: 0.875rem;
+}
+
+.topology-legend {
+  width: 0.65rem;
+  height: 0.65rem;
+  border-radius: 999px;
+  display: inline-block;
+}
+
+.topology-legend--positive {
+  background: var(--cds-support-success);
+}
+
+.topology-legend--warning {
+  background: var(--cds-support-warning);
+}
+
+.topology-legend--critical {
+  background: var(--cds-support-error);
+}
+
+.topology-panel__notice {
+  padding: 0.875rem 1rem;
+  border-left: 0.25rem solid var(--cds-border-subtle);
+  background: color-mix(in srgb, var(--cds-layer) 85%, transparent);
+}
+
+.topology-panel__notice--warning {
+  border-left-color: var(--cds-support-warning);
+}
+
+.topology-panel__notice--error {
+  border-left-color: var(--cds-support-error);
+}
+
+.topology-panel__body {
+  align-items: stretch;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.875rem;
+}
+
+.topology-canvas,
+.topology-inspector {
+  min-height: auto;
+}
+
+.topology-canvas {
+  padding: 0;
+  overflow: hidden;
+  border: 1px solid var(--cds-border-subtle);
+  min-height: clamp(40rem, 74vh, 64rem);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--cds-layer-accent) 32%, transparent) 0%, transparent 100%);
+}
+
+.topology-canvas__scroller {
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+}
+
+.topology-canvas__viewport {
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.topology-canvas__scene {
+  position: relative;
+  isolation: isolate;
+}
+
+.topology-canvas__surface {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.topology-edge {
+  fill: none;
+  stroke: color-mix(in srgb, var(--cds-text-secondary) 45%, transparent);
+  stroke-width: 1.5;
+  opacity: 0.45;
+  transition: opacity 120ms ease, stroke-width 120ms ease, stroke 120ms ease;
+}
+
+.topology-edge--active {
+  opacity: 1;
+  stroke-width: 2.5;
+  stroke: var(--cds-link-primary);
+}
+
+.topology-category {
+  position: absolute;
+  z-index: 1;
+  padding: 1.1rem 1.2rem;
+  border: 1px solid var(--cds-border-subtle);
+  background: color-mix(in srgb, var(--cds-layer) 74%, transparent);
+  box-shadow:
+    0 0 0 1px color-mix(in srgb, var(--cds-layer-accent) 35%, transparent) inset,
+    0 1rem 2rem color-mix(in srgb, var(--cds-layer-accent) 9%, transparent);
+  backdrop-filter: blur(4px);
+}
+
+.topology-category h3,
+.topology-inspector h3,
+.topology-inspector h4 {
+  margin: 0;
+}
+
+.topology-category p {
+  margin: 0.35rem 0 0;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--cds-text-secondary);
+}
+
+.topology-node {
+  position: absolute;
+  z-index: 2;
+  border: 1px solid var(--cds-border-subtle);
+  background: color-mix(in srgb, var(--cds-layer) 92%, transparent);
+  box-shadow: 0 0.65rem 1.4rem color-mix(in srgb, var(--cds-layer-accent) 18%, transparent);
+}
+
+.topology-node--network {
+  padding: 0.9rem 1rem;
+  display: grid;
+  gap: 0.35rem;
+  justify-content: space-between;
+  backdrop-filter: blur(4px);
+}
+
+.topology-node--network-shared {
+  border-color: color-mix(in srgb, var(--cds-link-primary) 45%, var(--cds-border-subtle));
+}
+
+.topology-node--network-private {
+  border-color: color-mix(in srgb, var(--cds-support-info) 35%, var(--cds-border-subtle));
+}
+
+.topology-node--network-host {
+  border-color: color-mix(in srgb, var(--cds-support-error) 35%, var(--cds-border-subtle));
+}
+
+.topology-node--service {
+  display: grid;
+  gap: 0.6rem;
+  padding: 1rem;
+  text-align: left;
+  cursor: pointer;
+  transition: transform 120ms ease, border-color 120ms ease, box-shadow 120ms ease;
+}
+
+.topology-node--service:hover,
+.topology-node--service:focus-visible,
+.topology-node--selected {
+  transform: translateY(-2px);
+  border-color: var(--cds-border-interactive);
+  box-shadow: 0 0 0 1px var(--cds-border-interactive), 0 0.75rem 1.75rem color-mix(in srgb, var(--cds-link-primary) 15%, transparent);
+}
+
+.topology-node--service strong,
+.topology-node--network span {
+  font-size: 0.95rem;
+}
+
+.topology-node__eyebrow {
+  display: block;
+  margin-top: 0.25rem;
+  color: var(--cds-text-secondary);
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+.topology-node__meta,
+.topology-node__footer small,
+.topology-node--network small,
+.topology-inspector__meta span,
+.topology-inspector p {
+  color: var(--cds-text-secondary);
+}
+
+.topology-node__meta,
+.topology-node__footer small {
+  font-size: 0.75rem;
+}
+
+.topology-node__port-list {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.topology-node__port-list small {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.topology-node__port-list .is-published {
+  color: var(--cds-text-primary);
+}
+
+.topology-inspector {
+  padding: 1rem;
+  border: 1px solid var(--cds-border-subtle);
+  background: linear-gradient(180deg, color-mix(in srgb, var(--cds-layer-accent) 32%, transparent) 0%, transparent 100%);
+}
+
+.topology-inspector__meta {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12rem, 1fr));
+  gap: 0.875rem;
+}
+
+.topology-inspector__meta div {
+  display: grid;
+  gap: 0.25rem;
+}
+
+.topology-inspector__meta strong {
+  font-size: 0.95rem;
+  font-weight: 600;
+}
+
+.topology-inspector__port-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.topology-summary-card__body {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(14rem, 1fr));
+  gap: 0.875rem;
+}
+
+.topology-summary-card__signal {
+  align-items: flex-start;
+  padding: 0.9rem 1rem;
+  border: 1px solid var(--cds-border-subtle);
+  background: color-mix(in srgb, var(--cds-layer) 86%, transparent);
+}
+
+.topology-summary-card__signal strong,
+.topology-summary-card__signal p,
+.topology-summary-card__footnote {
+  margin: 0;
+}
+
+.topology-summary-card__signal p,
+.topology-summary-card__footnote {
+  color: var(--cds-text-secondary);
+}
+
+.topology-summary-card__signal-dot {
+  width: 0.75rem;
+  height: 0.75rem;
+  margin-top: 0.2rem;
+  border-radius: 999px;
+  flex: 0 0 auto;
+  box-shadow: 0 0 0.8rem currentColor;
+}
+
+.topology-summary-card__signal-dot--healthy {
+  color: #4589ff;
+  background: #78a9ff;
+}
+
+.topology-summary-card__signal-dot--degraded {
+  color: #f1c21b;
+  background: #f1c21b;
+}
+
+.topology-summary-card__signal-dot--down {
+  color: #da1e28;
+  background: #ff8389;
+}
+
+code {
+  font-family: IBM Plex Mono, monospace;
+}
+
+@media (min-width: 1200px) {
+  .index-dashboard__grid {
+    padding: 1rem 1.5rem 2rem;
+  }
+}
+
+@media (max-width: 1056px) {
+  .index-dashboard__header-actions {
+    display: none;
+  }
+
+  .section-heading,
+  .directory-toolbar,
+  .service-card__header,
+  .service-card__details,
+  .service-detail__kv,
+  .history-list__item,
+  .service-detail__link-list li,
+  .admin-list__item,
+  .user-grid__item,
+  .topology-panel__header,
+  .topology-summary-card__header,
+  .topology-toolbar,
+  .topology-panel__body,
+  .topology-inspector__header,
+  .topology-node__header,
+  .topology-node__meta,
+  .topology-node__footer {
+    flex-direction: column;
+  }
+
+  .filters-panel__row,
+  .topology-toolbar {
+    grid-template-columns: 1fr;
+  }
+
+  .topology-canvas,
+  .topology-inspector {
+    min-height: 28rem;
+  }
+
+  .topology-canvas {
+    min-height: 32rem;
+  }
+
+  .overview-service-tabs .cds--tab-content {
+    padding-inline: 0.75rem;
+  }
+}

@@ -1,0 +1,91 @@
+# catalog.example.yml
+#
+# This is the seed catalog loaded by the API on first run.
+# Copy this file to catalog.yml and edit it to match your environment.
+# All services and categories are editable through the Admin panel after first run.
+#
+# Fields marked [optional] can be omitted.
+
+categories:
+  - id: infrastructure
+    name: Infrastructure
+    description: Core networking, storage, and compute services.
+
+  - id: monitoring
+    name: Monitoring
+    description: Observability, alerting, and metrics platforms.
+
+  - id: development
+    name: Development
+    description: Source control, CI/CD, and development tooling.
+
+  - id: media
+    name: Media
+    description: Self-hosted media management and streaming services.
+
+services:
+  # --- Infrastructure ---
+
+  - id: traefik
+    name: Traefik
+    categoryId: infrastructure
+    authMode: protected          # "protected" (behind auth gateway) or "direct"
+    externalUrl: https://traefik.example.com
+    tags: [proxy, networking, routing]
+    description: Reverse proxy and load balancer dashboard.
+
+  - id: portainer
+    name: Portainer
+    categoryId: infrastructure
+    authMode: protected
+    externalUrl: https://portainer.example.com
+    internalUrl: http://portainer:9000          # [optional] internal endpoint
+    probeUrl: http://portainer:9000/api/system/status  # [optional] URL probed for health
+    tags: [docker, containers, management]
+    description: Container management UI for Docker environments.
+
+  # --- Monitoring ---
+
+  - id: grafana
+    name: Grafana
+    categoryId: monitoring
+    authMode: protected
+    externalUrl: https://grafana.example.com
+    internalUrl: http://grafana:3000
+    probeUrl: http://grafana:3000/api/health
+    tags: [metrics, dashboards, observability]
+    description: Metrics visualization and alerting platform.
+
+  - id: prometheus
+    name: Prometheus
+    categoryId: monitoring
+    authMode: protected
+    externalUrl: https://prometheus.example.com
+    internalUrl: http://prometheus:9090
+    probeUrl: http://prometheus:9090/-/healthy
+    tags: [metrics, scraping]
+    description: Time-series metrics collection and storage.
+
+  # --- Development ---
+
+  - id: gitea
+    name: Gitea
+    categoryId: development
+    authMode: direct
+    externalUrl: https://git.example.com
+    internalUrl: http://gitea:3000
+    probeUrl: http://gitea:3000/api/healthz
+    tags: [git, source-control]
+    description: Lightweight self-hosted Git service.
+
+  # --- Media ---
+
+  - id: jellyfin
+    name: Jellyfin
+    categoryId: media
+    authMode: direct
+    externalUrl: https://jellyfin.example.com
+    internalUrl: http://jellyfin:8096
+    probeUrl: http://jellyfin:8096/health
+    tags: [media, streaming, tv]
+    description: Open-source media server and streaming platform.

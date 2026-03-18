@@ -1,0 +1,40 @@
+services:
+  api:
+    build:
+      context: ./api
+    container_name: index_api
+    restart: unless-stopped
+    env_file:
+      - ./api/.env
+    volumes:
+      - ./catalog.yml:/seed/catalog.yml:ro
+      - index_data:/data
+      # Optional: mount the Docker socket for topology discovery
+      - /var/run/docker.sock:/var/run/docker.sock:ro
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
+    healthcheck:
+      test: ["CMD", "python", "-c", "import urllib.request; urllib.request.urlopen('http://127.0.0.1:4000/healthz')"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+
+  web:
+    build:
+      context: .
+      dockerfile: nginx/Dockerfile
+    container_name: index_page
+    restart: unless-stopped
+    depends_on:
+      api:
+        condition: service_healthy
+    ports:
+      - "127.0.0.1:18493:18493"
+    healthcheck:
+      test: ["CMD-SHELL", "wget -qO- http://127.0.0.1:18493/healthz >/dev/null 2>&1 || exit 1"]
+      interval: 30s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  index_data:
